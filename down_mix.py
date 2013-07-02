@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import random
 import unicodedata
 import string
+import datetime
 
 def clean_name(title):
     #some stackoverflow fun, adapted of course
@@ -20,6 +21,13 @@ def main():
     TEMP_VID = '.youtube-dl-%s.flv'
     LOWER = 100000
     UPPER = 999999
+
+    originalDir = os.getcwd()
+    newDir = os.path.join(originalDir, str(datetime.datetime.now()))
+    if not os.path.exists(newDir):
+        os.mkdir(newDir)
+    os.chdir(newDir)
+
     r = requests.get(raw_input("Enter your mix URL:"))
 
     playlist = re.compile('<ol id=\"watch7-playlist-tray\" class=\"yt-uix-scroller\" .+?</ol>',re.DOTALL).findall(r.text)
@@ -39,6 +47,7 @@ def main():
         os.system(youtube_cmd)
         os.system(conv_cmd)
         os.remove(temp_file)
+
 
 main()
 

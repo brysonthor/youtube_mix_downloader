@@ -12,5 +12,6 @@ python down_mix.py
 Dependencies:
 sudo pip install youtube-dl
 sudo pip install beautifulsoup4
-sudo pip install requests
+sudo pip install pyside
+sudo pip install ghost.py
 sudo yum/apt-get install ffmpeg
