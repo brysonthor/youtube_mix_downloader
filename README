@@ -1,3 +1,17 @@
+This python script I worked up to strip the videos out of a youtube mix.
+
+Example Youtube URL Needed:
+http://www.youtube.com/watch?v=lHyCRE5pesI&list=RD02al9-3mW6zw8
+If you visit the above URL you'll notice there is a ordered list elment with all the
+videos in the Mix. This needs to exist in the url inorder for this to work
+
+Use:
+
+python down_mix.py URL
+
+NOTE! if your running this in Linux you can't just copy and paste the URL you have to escape the '&'
+I Plan to change this in the future but for now just add the \ in front to escape...
+
 pip install youtube-dl
 pip install beautifulsoup4
 pip install requests
