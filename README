@@ -10,7 +10,7 @@ Use:
 python down_mix.py
 
 Dependencies:
-pip install youtube-dl
-pip install beautifulsoup4
-pip install requests
-yum/apt-get install ffmpeg
+sudo pip install youtube-dl
+sudo pip install beautifulsoup4
+sudo pip install requests
+sudo yum/apt-get install ffmpeg
