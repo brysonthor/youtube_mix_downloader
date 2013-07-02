@@ -15,3 +15,5 @@ sudo pip install beautifulsoup4
 sudo pip install pyside
 sudo pip install ghost.py
 sudo yum/apt-get install ffmpeg
+cmake, qt4-qmake, ... hmm work in progress
+
