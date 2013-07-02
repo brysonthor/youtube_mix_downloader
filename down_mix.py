@@ -20,7 +20,7 @@ def main():
     TEMP_VID = '.youtube-dl-%s.flv'
     LOWER = 100000
     UPPER = 999999
-    r = requests.get(argv[1])
+    r = requests.get(raw_input("Enter your mix URL:"))
 
     playlist = re.compile('<ol id=\"watch7-playlist-tray\" class=\"yt-uix-scroller\" .+?</ol>',re.DOTALL).findall(r.text)
 
