@@ -7,10 +7,7 @@ videos in the Mix. This needs to exist in the url inorder for this to work
 
 Use:
 
-python down_mix.py URL
-
-NOTE! if your running this in Linux you can't just copy and paste the URL you have to escape the '&'
-I Plan to change this in the future but for now just add the \ in front to escape...
+python down_mix.py
 
 pip install youtube-dl
 pip install beautifulsoup4
