@@ -21,34 +21,35 @@ def main():
     TEMP_VID = '.youtube-dl-%s.flv'
     LOWER = 100000
     UPPER = 999999
-
-    originalDir = os.getcwd()
-    newDir = os.path.join(originalDir, str(datetime.datetime.now()))
-    if not os.path.exists(newDir):
-        os.mkdir(newDir)
-    os.chdir(newDir)
-
+    PARSE_ERROR = 'This URL isn\'t currently compatible\r\nsome playlists are loaded dynamically\r\nand cause problems for detection'
     r = requests.get(raw_input("Enter your mix URL:"))
 
     playlist = re.compile('<ol id=\"watch7-playlist-tray\" class=\"yt-uix-scroller\" .+?</ol>',re.DOTALL).findall(r.text)
+    if playlist:
 
-    playlistObj = BeautifulSoup(playlist[0])
+        originalDir = os.getcwd()
+        newDir = os.path.join(originalDir, str(datetime.datetime.now()))
+        if not os.path.exists(newDir):
+            os.mkdir(newDir)
+        os.chdir(newDir)
 
-    videoUrlList = []
+        playlistObj = BeautifulSoup(playlist[0])
 
-    for l in playlistObj.find_all('li'):
-        videoUrlList.append((BASE_URL+l.get('data-video-id'),l.get('data-video-title')+EXT))
+        videoUrlList = []
 
-    for v in videoUrlList:
-        temp_file = TEMP_VID % random.randint(LOWER,UPPER)
-        youtube_cmd = 'youtube-dl --output="%s" --format=18 "%s"' %(temp_file,v[0])
-        conv_cmd = 'ffmpeg -i "%s" -acodec libmp3lame -ac 2 -ab 320k -vn -y "%s"' %(temp_file,clean_name(v[1]))
-        #print temp_file,youtube_cmd,conv_cmd
-        os.system(youtube_cmd)
-        os.system(conv_cmd)
-        os.remove(temp_file)
+        for l in playlistObj.find_all('li'):
+            videoUrlList.append((BASE_URL+l.get('data-video-id'),l.get('data-video-title')+EXT))
 
-
+        for v in videoUrlList:
+            temp_file = TEMP_VID % random.randint(LOWER,UPPER)
+            youtube_cmd = 'youtube-dl --output="%s" --format=18 "%s"' %(temp_file,v[0])
+            conv_cmd = 'ffmpeg -i "%s" -acodec libmp3lame -ac 2 -ab 320k -vn -y "%s"' %(temp_file,clean_name(v[1]))
+            #print temp_file,youtube_cmd,conv_cmd
+            os.system(youtube_cmd)
+            os.system(conv_cmd)
+            os.remove(temp_file)
+    else:
+        print PARSE_ERROR
 main()
 
 
