@@ -59,7 +59,10 @@ def create_mp3s(playlist):
         #print temp_file,youtube_cmd,conv_cmd
         os.system(youtube_cmd)
         os.system(conv_cmd)
-        os.remove(temp_file)
+        try:
+            os.remove(temp_file)
+        except:
+            print 'file was removed by youtube-dl because it failed most likely'
 
 def offer_selenium(prompt=None, resp=False):
     """prompts for yes or no response from the user. Returns True for yes and
