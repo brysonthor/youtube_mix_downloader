@@ -13,7 +13,9 @@ Dependencies:
 sudo pip install youtube-dl
 sudo pip install beautifulsoup4
 sudo pip install pyside
-sudo pip install ghost.py
 sudo yum/apt-get install ffmpeg
-cmake, qt4-qmake, ... hmm work in progress
+
+HUGE NOTE: THIS SCRIPT DEPENDS HIGHLY ON YOUTUBE-DL & FFMPEG
+SO MAKE SURE THEY ARE UP TO DATE ALWAYS, ESPECIALLY IF YOU'RE HAVING
+YOUTUBE ENCRYPTION ERRORS.
 
